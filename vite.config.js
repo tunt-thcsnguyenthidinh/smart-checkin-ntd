@@ -4,10 +4,16 @@ import react from '@vitejs/plugin-react'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
+  // Cấu hình Build để hỗ trợ các trình duyệt hiện đại và import.meta.env
   build: {
-    // Quan trọng: Nâng target lên es2020 để hỗ trợ import.meta.env không bị lỗi warning
     target: 'es2020', 
     outDir: 'dist',
+  },
+  // Cấu hình tối ưu hóa dependency để tránh lỗi khi dev
+  optimizeDeps: {
+    esbuildOptions: {
+      target: 'es2020',
+    },
   },
   server: {
     port: 5173,
